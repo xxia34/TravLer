@@ -1,39 +1,48 @@
 import React, { Component } from 'react';
 import Draggable, { DraggableCore } from 'react-draggable'; // Both at the same time
+import { connect } from 'react-redux';
 import './Dashboard.css';
 
 class Dashboard extends Component {
   constructor () {
     super()
-    this.toggleWindow = this.toggleWindow.bind(this);
 
     this.state = {
-      tripsWindowVisible : true,
-      mapWindowVisible : false,
-      calendarTripWindowVisible : false,
+      isTripsWindowVisible : true,
+      isMapWindowVisible : false,
+      isCalendarWindowVisible : false,
     }
   }
-  
-  toggleWindow () {
+
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      isTripsWindowHidden: !this.state.tripsWindowVisible
+      isTripsWindowVisible: nextProps.isTripsWindowVisible,
+      isMapWindowVisible: nextProps.isMapWindowVisible,
+      isCalendarWindowVisible: nextProps.isCalendarWindowVisible,
     })
   }
+
   render() { 
     return (
       <div>
-        {this.state.tripsWindowVisible && <DraggableWindow />}
+        {this.state.isTripsWindowVisible && <DraggableWindow xPos="0" yPos="0" fill="#ccc"></DraggableWindow>}
+        {this.state.isMapWindowVisible && <DraggableWindow xPos="55" yPos="0" fill="#555"></DraggableWindow>}
+        {this.state.isCalendarWindowVisible && <DraggableWindow xPos="0" yPos="50" fill="#999"></DraggableWindow>}
       </div>
-    );
+    )
   }
 }
 
-const DraggableWindow = () => (
-  <Draggable handle=".handle" defaultPosition={{x: 0, y: 0}} position={null} grid={[50, 50]}
-  onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-    <svg className="handle" width="500" height="500">
-    <rect width="500" height="500" fill="#ccc" rx="0" ry="0"></rect></svg>
-  </Draggable>
-);
+class DraggableWindow extends Component {
+  render() {
+   return (
+      <Draggable handle=".handle" defaultPosition={{x: Number(this.props.xPos), y: Number(this.props.yPos)}} position={null} grid={[50, 50]}
+      onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
+        <svg className="handle" width="500" height="500">
+        <rect width="500" height="500" fill={this.props.fill} rx="0" ry="0"></rect></svg>
+      </Draggable>
+    )
+  }
+}
 
 export default Dashboard;

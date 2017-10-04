@@ -4,17 +4,24 @@ import './ActionBarButton.css';
 class ActionBarButton extends Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.toggleWindow = this.toggleWindow.bind(this);
+
+        this.state = {
+            visibility: true
+        }
     }
 
-    handleClick() {
-        console.log(this.props.name);
+    toggleWindow() {
+        this.props.toggleWindow(this.state.visibility, this.props.name)
+        this.setState({
+            visibility: !this.state.visibility
+        })
     }
 
     render() {
         return (
-            <div className="button" onClick={this.handleClick}>{this.props.name}</div>
-        );
+            <div className="button" onClick={this.toggleWindow}>{this.props.name}</div>
+        )
     }
 }
 
