@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Draggable, { DraggableCore } from 'react-draggable'; // Both at the same time
 import { connect } from 'react-redux';
 import './Dashboard.css';
+import DraggableMap from './DraggableMap';
 
 class Dashboard extends Component {
   constructor () {
@@ -26,7 +27,7 @@ class Dashboard extends Component {
     return (
       <div>
         {this.state.isTripsWindowVisible && <DraggableWindow xPos="0" yPos="0" fill="#ccc"></DraggableWindow>}
-        {this.state.isMapWindowVisible && <DraggableWindow xPos="55" yPos="0" fill="#555"></DraggableWindow>}
+        {this.state.isMapWindowVisible && <DraggableMap xPos="55" yPos="0" fill="#555"></DraggableMap>}
         {this.state.isCalendarWindowVisible && <DraggableWindow xPos="0" yPos="50" fill="#999"></DraggableWindow>}
       </div>
     )

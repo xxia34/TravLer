@@ -17,8 +17,11 @@ class ActionBar extends Component {
     render() { return (
     	    <div className="action-bar">
     			<div className="buttons">
+    				<div className="status-circle" id="status-circle-pink"></div>
     				<ActionBarButton name="Trips" toggleWindow={this.clickButton}/>
+    				<div className="status-circle" id="status-circle-orange"></div>
     				<ActionBarButton name="Map" toggleWindow={this.clickButton}/>
+    				<div className="status-circle" id="status-circle-green"></div>
         			<ActionBarButton name="Calendar" toggleWindow={this.clickButton}/>
         		</div>
         	</div>

@@ -17,7 +17,6 @@ class App extends Component {
     }
 
 	toggleWindow(visibility, windowName) {
-		console.log(windowName)
 		if (windowName == 'Trips') {
 			this.setState({
 				isTripsWindowVisible: !visibility

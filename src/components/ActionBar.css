@@ -1,6 +1,43 @@
 .action-bar {
-  position: relative;
   height: 50px;
   width: 100%;
   background-color: white;
 }
+
+.status-circle {
+	border-radius: 50%;
+	width: 9px;
+	height: 9px; 
+	margin: 20px 15px auto 15px;
+	display: inline-block;
+}
+
+#status-circle-pink {
+	background-color: #FF338D;
+}
+
+#status-circle-pink-off {
+	width: 8px;
+	height: 8px; 
+	border: 1px solid #FF338D;
+}
+
+#status-circle-orange {
+	background-color: #FF8633;
+}
+
+#status-circle-orange-off {
+	width: 8px;
+	height: 8px; 
+	border: 1px solid #FF338D;
+}
+
+#status-circle-green {
+	background-color: #42FF67;
+}
+#status-circle-green-off {
+	width: 8px;
+	height: 8px; 
+	border: 1px solid #FF338D;
+}
+
