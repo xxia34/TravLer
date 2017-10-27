@@ -26,9 +26,9 @@ class Dashboard extends Component {
   render() { 
     return (
       <div>
-        {this.state.isTripsWindowVisible && <DraggableWindow xPos="0" yPos="0" fill="#ccc"></DraggableWindow>}
-        {this.state.isMapWindowVisible && <DraggableMap xPos="55" yPos="0" fill="#555"></DraggableMap>}
-        {this.state.isCalendarWindowVisible && <DraggableWindow xPos="0" yPos="50" fill="#999"></DraggableWindow>}
+        {this.state.isTripsWindowVisible && <DraggableWindow xPos="0" yPos="0" fill="#ccc" width="300" height="300"></DraggableWindow>}
+        {this.state.isMapWindowVisible && <DraggableMap xPos="500" yPos="0" fill="#555" width="650" height="650"></DraggableMap>}
+        {this.state.isCalendarWindowVisible && <DraggableWindow xPos="0" yPos="50" fill="#999" width="300" height="300"></DraggableWindow>}
       </div>
     )
   }
@@ -39,7 +39,7 @@ class DraggableWindow extends Component {
    return (
       <Draggable handle=".handle" defaultPosition={{x: Number(this.props.xPos), y: Number(this.props.yPos)}} position={null} grid={[50, 50]}
       onStart={this.handleStart} onDrag={this.handleDrag} onStop={this.handleStop}>
-        <svg className="handle" width="500" height="500">
+        <svg className="handle" width={this.props.width} height={this.props.height}>
         <rect width="500" height="500" fill={this.props.fill} rx="0" ry="0"></rect></svg>
       </Draggable>
     )
